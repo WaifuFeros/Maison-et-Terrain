@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Maison et Terrain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b1bdb2b89c9d9eb631e017bffde72c6f64f2bfa4")]
 [assembly: System.Reflection.AssemblyProductAttribute("Maison et Terrain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Maison et Terrain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

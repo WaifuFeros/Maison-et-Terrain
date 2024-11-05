@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using System.Collections.Generic;
 
 namespace ExemplePOO
 {
@@ -7,28 +8,37 @@ namespace ExemplePOO
     {
         public int NbPieces;
         public bool Jardin;
-        public List<Piece> Pieces;
+        public Piece[] Pieces;
+        public static readonly List<string> NomsPieces = new List<string>() { "Cuisine", "Salle de bain", "Chambre", "Salon", "Garage", "Bureau", "Terrasse" };
 
-        public Maison(string adresse, float superficie, int nbPieces, bool jardin, List<Piece> pieces) : base(adresse, superficie)
+        public Maison(string adresse, float superficie, int nbPieces, bool jardin) : base(adresse, superficie)
         {
             NbPieces = nbPieces;
             Jardin = jardin;
-            Pieces = pieces;
+            Superficie = 0;
+            Pieces = new Piece[NbPieces];
+
+            Random rnd = new Random();
+
+            for (int i = 0; i < NbPieces; i++)
+            {
+                Pieces[i] = new Piece(rnd.Next(10, 30), NomsPieces[rnd.Next(NomsPieces.Count)]);
+                Superficie += Pieces[i].Superficie;
+            }
         }
 
         public override string ToString()
         {
             string toString = base.ToString();
             toString += String.Format("Nombre de pièces = {0}\n", this.NbPieces);
+            for (int i = 0; i < this.NbPieces; i++)
+                toString += String.Format("- {0}\n", this.Pieces[i]);
             toString += String.Format("Présence d'un jardin = {0}\n", this.Jardin ? "Oui" : "Non");
-            toString += "Pièces :";
-            foreach (var piece in Pieces)
-                toString += "\n- " + piece.ToString();
             toString += String.Format("> VALEUR = {0}$\n", this.EvaluationValeur());
             return toString;
         }
 
-        public float EvaluationValeur()
+        public new float EvaluationValeur()
         {
             int facteur = 3000;
 

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExemplePOO
 {
@@ -10,22 +7,30 @@ namespace ExemplePOO
     {
         public string Nom;
         public string Prenom;
-        public List<Bien> Biens;
+        public Bien[] Biens = new Bien[0];
 
-        public Proprietaire(string Nom, string Prenom, List<Bien> Biens)
+
+        public Proprietaire(string nom, string prenom, Bien[] biens)
         {
-            this.Nom = Nom;
-            this.Prenom = Prenom;
-            this.Biens = Biens;
+            this.Nom = nom;
+            this.Prenom = prenom;
+            this.Biens = biens;
+        }
+
+        private string ListeBiens()
+        {
+            string listeBiens = "";
+            foreach (Bien B in this.Biens)
+            {
+                listeBiens += String.Format("- {0} {1} au {2}\n", B.GetType().Name == "Maison" ? "Une" : "Un", B.GetType().Name, B.Adresse);
+            }
+            return listeBiens;
         }
 
         public override string ToString()
         {
-            string toString = $"Nom = {Nom}\n";
-            toString += $"Prénom = {Prenom}\n";
-            toString += "Biens :\n";
-            foreach (var bien in Biens)
-                toString += bien.ToString() + "\n";
+            string toString = String.Format("{1} {0} {2}", this.Nom, this.Prenom, this.Biens?.Length != 0 ? "possède\n" : "ne possède aucun bien");
+            toString += ListeBiens();
             return toString;
         }
     }
