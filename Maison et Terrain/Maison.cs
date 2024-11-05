@@ -25,6 +25,7 @@ namespace ExemplePOO
             toString += String.Format("Nombre de pièces = {0}\n", this.NbPieces);
             toString += String.Format("Présence d'un jardin = {0}\n", this.Jardin ? "Oui" : "Non");
             toString += String.Format("> VALEUR = {0}$", this.EvaluationValeur());
+            return toString;
         }
 
         public float EvaluationValeur()
