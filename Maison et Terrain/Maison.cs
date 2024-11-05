@@ -3,17 +3,13 @@ using System.Text.RegularExpressions;
 
 namespace ExemplePOO
 {
-    public class Maison
+    public class Maison : Bien
     {
-        public string Adresse;
-        public float Superficie;
         public int NbPieces;
         public bool Jardin;
 
-        public Maison(string adresse, float superficie, int nbPieces, bool jardin)
+        public Maison(string adresse, float superficie, int nbPieces, bool jardin) : base(adresse, superficie)
         {
-            Adresse = adresse;
-            Superficie = superficie;
             NbPieces = nbPieces;
             Jardin = jardin;
         }
