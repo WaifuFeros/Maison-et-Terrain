@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ExemplePOO
@@ -18,7 +19,7 @@ namespace ExemplePOO
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"Adresse = {Adresse}");
             sb.AppendLine($"Superficie = {Superficie}m²");
-            sb += String.Format("Nombre de pièces = {0}", this.NbPieces);
+            sb.AppendLine($"Nombre de clotures = {NbCotesClotures}");
             sb.AppendLine($"Présence d'un jardin = {(Riviere ? "Oui" : "Non")}");
             sb.AppendLine($"> VALEUR = {EvaluationValeur()}$");
             return sb.ToString();
@@ -26,9 +27,17 @@ namespace ExemplePOO
 
         public float EvaluationValeur()
         {
-            float valeur = 0;
+            int facteur = 3000;
 
-            return valeur;
+            if (Riviere)
+                facteur += 500;
+
+            facteur += CoutFinirCloture();
+
+            if (Regex.IsMatch(this.Adresse, @"\bParis\b")) { facteur += 7000; }
+            else if (Regex.IsMatch(this.Adresse, @"\bLyon\b")) { facteur += 2000; }
+
+            return this.Superficie * facteur;
         }
 
         public int CoutFinirCloture()
