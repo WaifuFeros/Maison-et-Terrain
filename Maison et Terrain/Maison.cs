@@ -7,11 +7,13 @@ namespace ExemplePOO
     {
         public int NbPieces;
         public bool Jardin;
+        public List<Piece> Pieces;
 
-        public Maison(string adresse, float superficie, int nbPieces, bool jardin) : base(adresse, superficie)
+        public Maison(string adresse, float superficie, int nbPieces, bool jardin, List<Piece> pieces) : base(adresse, superficie)
         {
             NbPieces = nbPieces;
             Jardin = jardin;
+            Pieces = pieces;
         }
 
         public override string ToString()
@@ -19,6 +21,9 @@ namespace ExemplePOO
             string toString = base.ToString();
             toString += String.Format("Nombre de pièces = {0}\n", this.NbPieces);
             toString += String.Format("Présence d'un jardin = {0}\n", this.Jardin ? "Oui" : "Non");
+            toString += "Pièces :";
+            foreach (Piece piece in Pieces)
+                toString += "- " + piece.ToString();
             toString += String.Format("> VALEUR = {0}$\n", this.EvaluationValeur());
             return toString;
         }
