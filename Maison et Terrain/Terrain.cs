@@ -43,6 +43,10 @@ namespace ExemplePOO
         public int CoutFinirCloture()
         {
             int cout = 0;
+
+            if (NbCotesClotures < 3)
+                cout += 200 * (3 - NbCotesClotures);
+
             return cout;
         }
     }
