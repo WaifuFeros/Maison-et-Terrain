@@ -16,5 +16,10 @@ namespace ExemplePOO
             this.Nom = Nom;
             this.Superficie = Superficie;
         }
+
+        public override string ToString()
+        {
+            return $"Superficie de {Nom} = {Superficie}";
+        }
     }
 }
