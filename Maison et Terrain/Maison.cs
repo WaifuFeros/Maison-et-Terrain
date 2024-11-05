@@ -22,8 +22,8 @@ namespace ExemplePOO
             toString += String.Format("Nombre de pièces = {0}\n", this.NbPieces);
             toString += String.Format("Présence d'un jardin = {0}\n", this.Jardin ? "Oui" : "Non");
             toString += "Pièces :";
-            foreach (Piece piece in Pieces)
-                toString += "- " + piece.ToString();
+            foreach (var piece in Pieces)
+                toString += "\n- " + piece.ToString();
             toString += String.Format("> VALEUR = {0}$\n", this.EvaluationValeur());
             return toString;
         }
