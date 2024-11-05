@@ -16,11 +16,10 @@ namespace ExemplePOO
 
         public override string ToString()
         {
-            string toString = String.Format("Adresse = {0}\n", this.Adresse);
-            toString += String.Format("Superficie = {0}m²\n", this.Superficie);
+            string toString = base.ToString();
             toString += String.Format("Nombre de pièces = {0}\n", this.NbPieces);
             toString += String.Format("Présence d'un jardin = {0}\n", this.Jardin ? "Oui" : "Non");
-            toString += String.Format("> VALEUR = {0}$", this.EvaluationValeur());
+            toString += String.Format("> VALEUR = {0}$\n", this.EvaluationValeur());
             return toString;
         }
 
