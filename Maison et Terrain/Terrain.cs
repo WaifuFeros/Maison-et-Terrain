@@ -15,7 +15,13 @@ namespace ExemplePOO
 
         public override string ToString()
         {
-            return base.ToString();
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"Adresse = {Adresse}");
+            sb.AppendLine($"Superficie = {Superficie}m²");
+            sb += String.Format("Nombre de pièces = {0}", this.NbPieces);
+            sb.AppendLine($"Présence d'un jardin = {(Riviere ? "Oui" : "Non")}");
+            sb.AppendLine($"> VALEUR = {EvaluationValeur()}$");
+            return sb.ToString();
         }
 
         public float EvaluationValeur()
