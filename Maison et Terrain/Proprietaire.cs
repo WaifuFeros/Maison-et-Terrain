@@ -18,5 +18,15 @@ namespace ExemplePOO
             this.Prenom = Prenom;
             this.Biens = Biens;
         }
+
+        public override string ToString()
+        {
+            string toString = $"Nom = {Nom}\n";
+            toString += $"Prénom = {Prenom}\n";
+            toString += "Biens :\n";
+            foreach (var bien in Biens)
+                toString += bien.ToString() + "\n";
+            return toString;
+        }
     }
 }
